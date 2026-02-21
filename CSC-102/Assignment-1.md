@@ -465,6 +465,92 @@ The dominant term is $an^3log^3n$ ,
 
 #### (a) $f(n) = O(g(n))$
 
+False 
 
+- A function $f(n)$ is in $O(g(n))$ if there exist positive constants $c > 0$ and $n_0 > 0$ such that:$$0 \le f(n) \le c \cdot g(n) \quad \text{for all } n \ge n_0$$
+
+$$n = n$$
+$$n^n = n^n$$
+$$n^{n^{n}} > 2^{n^{n}}$$
+$$Also, \quad n^{n^{n^{n}}} > 2^{2^{n^{n}}}$$
+
+Since, there exists no $c$ which can make the deifinition true
+
+#### (b) $f(n) = \Omega(g(n))$
+
+True
+
+- A function $f(n)$ is in $\Omega(g(n))$ if there exist positive constants $c > 0$ and $n_0 > 0$ such that:$$f(n) \ge c \cdot g(n) \ge 0 \quad \text{for all } n \ge n_0$$
+
+$$\quad n^{n^{n^{n}}} > 2^{2^{n^{n}}}$$
+
+Since , there exists $c > 0$ and $n \ge n_0$ which satisfies the definition ,
+
+>$\implies f(n) = \Omega(g(n))$
+
+## Question 15 
+
+#### $O(n)$
+
+- A function $f(n)$ is in $O(g(n))$ if there exist positive constants $c > 0$ and $n_0 > 0$ such that:
+$$0 \le f(n) \le c \cdot g(n) \quad \text{for all } n \ge n_0$$
+
+#### $\Omega(n)$
+
+- A function $f(n)$ is in $\Omega(g(n))$ if there exist positive constants $c > 0$ and $n_0 > 0$ such that:
+$$f(n) \ge c \cdot g(n) \ge 0 \quad \text{for all } n \ge n_0$$
+
+#### $\Theta(n)$
+
+- A function $f(n)$ is in $\Theta(g(n))$ if there exist positive constants $c_1 , c_2 > 0$ and $n_0 > 0$ such that:
+$$c_1 \cdot g(n) \ge f(n) \ge c_2 \cdot g(n) \ge 0 \quad \forall n \ge n_0$$
+
+
+### (a) $f(n) = O(g(n))$ and $g(n) = O(f(n))$ implies $f(n) = Θ(g(n)).$
+
+$f(n) = O(g(n)) \implies 0 \le f(n) \le a \cdot g(n) \quad \text{for all } n \ge n_0 \quad -1$
+
+$g(n) = O(f(n)) \implies f(n) \ge b \cdot g(n) \ge 0 \quad \text{for all } n \ge n_0 \quad -2$
+
+From $\quad 1 \quad and \quad 2$ , we can conclude that 
+$$a \cdot g(n) \ge f(n) \ge b \cdot g(n) \ge 0 \implies f(n) = \Theta(g(n))$$
+
+>$\therefore$ The given statement is true
+
+### (b) If $f(n) = O(g(n))$ and $g(n) = Ω(f(n))$, then $f(n) = Θ(g(n))$.
+
+$f(n) = O(g(n)) \implies 0 \le f(n) \le a \cdot g(n) \quad \text{for all } n \ge n_0 \quad -1$
+
+$g(n) = \Omega(f(n)) \implies g(n) \ge b \cdot f(n) \ge 0 \quad \text{for all } n \ge n_0 \quad -2$
+
+By $\quad 1 \quad and \quad 2$ , we can not definitely say whether $f(n) = Θ(g(n))$ because both statements are mathematically equivalent.
+
+We can disprove it by counter example like $f(n) = n , g(n) = n^2$
+
+>$\therefore$ The given statement is false
+
+### (c) If $f(n) = O(g(n))$ and $g(n) = Θ(f(n))$, then $f(n) = O(f(n)^2)$.
+
+$f(n) = O(g(n)) \implies 0 \le f(n) \le a \cdot g(n) \quad \text{for all } n \ge n_0 \quad -1$
+
+$g(n) = Θ(f(n)) \implies c_1 \cdot g(n) \ge f(n) \ge c_2 \cdot g(n) \ge 0 \quad \forall n \ge n_0 \quad -2$
+
+$2^{nd}$ statement makes the $1^{st}$ reductant, as both function grow asypmtotically at same rate.
+
+> But the statement   $f(n) = O(f(n)^2)$ is ,in general, False.
+
+
+### (d) If $f(n) = O(g(n))$ and $g(n) = Ω(f(n))$, then $f(n) = Ω(f(n)log(g(n))).$
+
+$f(n) = O(g(n)) \implies 0 \le f(n) \le a \cdot g(n) \quad \text{for all } n \ge n_0 \quad -1$
+
+$g(n) = \Omega(f(n)) \implies g(n) \ge b \cdot f(n) \ge 0 \quad \text{for all } n \ge n_0 \quad -2$
+
+By $\quad 1 \quad and \quad 2$ , we can say that $g(n)$ grows asymptotically faster than or same as $f(n)$.
+
+$f(n) = Ω(f(n)log(g(n)))$ , this statement suggests that f(n) is lower bound by
+$f(n) \cdot \log(g(n))$ but as $\log(g(n))$ increases the growth rate of $f(n)$ , $f(n) \cdot \log(g(n))$ would grow same or faster than $f(n)$ alone.
+
+> The given statement is false .
 
 
