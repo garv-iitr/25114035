@@ -79,6 +79,7 @@ $log(n) > \sqrt{log(n)} > log(log(n))$
 
 ![alt text](IMG_20260220_113635074_HDR.jpg)
 
+<iframe src="https://www.desmos.com/calculator/swmhgoatun?embed" width="600" height="200" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 #  Question 4 
 
@@ -176,8 +177,71 @@ $\therefore$ Time Complexity is $O(n+m)$
 ## (a) $p(n) = 2 n^{1.5} + 10, q(n) = 200 n^2 + 100$
 For much larger $n$ , $n^2 > n^{1.5}$
 
-$\therefore$ $q(n)$ is asymptotically bigger than $p(n)$.
+>$\therefore$ $q(n)$ is asymptotically bigger than $p(n)$.
 
 ## (b) $p(n) = 30 n^2 2^n, q(n) = 60 n 2^n + 30 n$
 
-Looking at the terms with higest powers in both functions 
+Looking at the terms with higest powers in both functions , for $n\to \infin : 30n^2 2^n >>60n 2^n$
+> $\implies$ $p(n)$ is asymptotically bigger than $q(n)$.
+
+## (C) $p(n) = n, q(n) = n^{(1+cos(n))}$ 
+
+As $n\to\infin\quad,cos(n)$ oscillates between $[-1,1]$ 
+- $q(n)$ varies between $[1,n^2]$ which makes it difficult to make any bold statement about comparison between both function .
+ >$\therefore$ We can't make a definitve statement over all $n$ due to varying exponent.
+
+
+# Question 7
+| Functions                    | $O$         | $\Omega$    | $\Theta$    | $o$       | $\omega$ |
+| ---------------------------- | ----------- | ----------- | ----------- | --------- | -------- |
+| (a) $15 n^{1.5} + 25 n − 35$ | $n^{1.5}$   | $n^{1.5}$   | $n^{1.5}$   | $n^2$     | $n$      |
+| (b) $30 n^2log(n) + 40 n$    | $n^2log(n)$ | $n^2log(n)$ | $n^2log(n)$ | $n^3$     | $n^2$    |
+| (c) $22 n^3 + 35 n^2log(n)$  | $n^3$       | $n^3$       | $n^3$       | $n^4$     | $n^2$    |
+| (d) $100 n 2^n − 120 n^3$    | $n2^n$      | $n2^n$      | $n2^n$      | $n^2 2^n$ | $2^n$    |
+
+# Question 8
+- A function $f(n)$ is in $\Omega(g(n))$ if there exist positive constants $c > 0$ and $n_0 > 0$ such that:$$f(n) \ge c \cdot g(n) \ge 0 \quad \text{for all } n \ge n_0$$
+
+
+- A function $f(n)$ is in $O(g(n))$ if there exist positive constants $c > 0$ and $n_0 > 0$ such that:$$0 \le f(n) \le c \cdot g(n) \quad \text{for all } n \ge n_0$$
+
+ ## (a) $25 n^3log(n) + 7 n^2 \ne O(n^3)$
+### By defintion
+Assume for the sake of contradiction that $25n^3 \log n + 7n^2 = O(n^3)$ .By the definition, there must exist some positive constants $c > 0$ and $n_0 > 0$ such that for all $n \ge n_0$ :
+
+$$25n^3 \log n + 7n^2 \le c \cdot n^3$$
+$$\frac{25n^3 \log n + 7n^2}{n^3} \le \frac{c \cdot n^3}{n^3}$$
+$$25 \log n + \frac{7}{n} \le c$$
+
+Since the left side grows to infinity (as $n$ grows larger), it is impossible to find a finite constant $c$ that bounds it from above for all $n \ge n_0$. Our initial assumption is false.
+
+>Therefore, by definition:$$25n^3 \log n + 7n^2 \neq O(n^3)$$
+
+ ### By observation
+ As the dominant term in this function is $25 n^3log(n)$, and it's Time Complexity is $\Theta(n^3log(n))$ , Also it is always $> n^3$ ,
+> $\therefore$ The function is $\omega(n^3)$ and thus $\ne O(n^3)$
+
+ ## (b) $14 n^3 + 9 n^2\ne O(n^2)$ 
+ As the dominant term in this function is $14n^3$ which is always larger than $n^2$
+ > $\therefore$ The function $\ne O(n^2)$ 
+
+ ## (c) $18 n^3log(n) + 6 n^2 \ne Ω(n^4)$
+### By defintion
+Assume for the sake of contradiction that $18n^3 \log n + 6n^2 = \Omega(n^4)$.
+By the definition, there must exist positive constants $c > 0$ and $n_0 > 0$ such that for all $n \ge n_0$:
+$$18n^3 \log n + 6n^2 \ge c \cdot n^4$$
+$$\frac{18n^3 \log n + 6n^2}{n^4} \ge \frac{c \cdot n^4}{n^4}$$
+$$\frac{18 \log n}{n} + \frac{6}{n^2} \ge c$$
+Since both terms on the left side approach $0$ as $n$ approaches infinity, the entire left side of the inequality approaches $0$.
+However, our definition requires $c$ to be a positive number greater than zero.
+
+Therefore, for any chosen $c > 0$, you can always find an $n$ large enough where the inequality $\frac{18 \log n}{n} + \frac{6}{n^2} \ge c$ fails.
+
+>Therefore, by definition:$$18n^3 \log n + 6n^2 \neq \Omega(n^4)$$
+### By Observation
+As the dominant term in this function is $n^3 log(n)$ , $$and \quad n > log(n) \quad \forall \quad n$$
+
+$\therefore n^4 > n^3log(n)$ , 
+>$\implies f(n) = o(n^4)\quad and \neq \Omega(n^4)$
+
+## (d) $12 n^3 + 7 n^2 \ne Ω(n^3log(n))$
