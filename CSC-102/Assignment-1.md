@@ -79,8 +79,6 @@ $log(n) > \sqrt{log(n)} > log(log(n))$
 
 ![alt text](IMG_20260220_113635074_HDR.jpg)
 
-<iframe src="https://www.desmos.com/calculator/swmhgoatun?embed" width="600" height="200" style="border: 1px solid #ccc" frameborder=0></iframe>
-
 #  Question 4 
 
 ## (a) $log(n!) = \Theta(nlog(n))$
@@ -181,13 +179,13 @@ For much larger $n$ , $n^2 > n^{1.5}$
 
 ## (b) $p(n) = 30 n^2 2^n, q(n) = 60 n 2^n + 30 n$
 
-Looking at the terms with higest powers in both functions , for $n\to \infin : 30n^2 2^n >>60n 2^n$
+Looking at the terms with higest powers in both functions , for $n\to \infin : 30n^2 2^n \gg 60n 2^n$
 > $\implies$ $p(n)$ is asymptotically bigger than $q(n)$.
 
 ## (C) $p(n) = n, q(n) = n^{(1+cos(n))}$ 
 
 As $n\to\infin\quad,cos(n)$ oscillates between $[-1,1]$ 
-- $q(n)$ varies between $[1,n^2]$ which makes it difficult to make any bold statement about comparison between both function .
+- $q(n)$ varies between $[1,n^2]$ which makes it difficult to make any bold statement about comparison between both function.
  >$\therefore$ We can't make a definitve statement over all $n$ due to varying exponent.
 
 
@@ -245,3 +243,9 @@ $\therefore n^4 > n^3log(n)$ ,
 >$\implies f(n) = o(n^4)\quad and \neq \Omega(n^4)$
 
 ## (d) $12 n^3 + 7 n^2 \ne Ω(n^3log(n))$
+
+As the dominant term in this fincction is $12n^3$ which is always $\le n^3 \log n$
+>$\therefore$ The function is not $\Omega (n^3\log n)$
+
+## (e) $\frac{n^2}{\log (n)} \ne \Theta(n^2)$
+
