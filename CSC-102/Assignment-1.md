@@ -284,4 +284,187 @@ For $f(n) = \Theta(g(n))$ to be true, it must be true that:
 1. $f(n) = O(g(n))$
 2. $f(n) = \Omega(g(n))$
 
-Starting with using definition of $\Omega$
+Starting with using definition of $\Omega$ , Assuming for sake of contradiction:
+By the definition, there must exist positive constants $c > 0$ and $n_0 > 0$ such that for all $n \ge n_0$:
+$$\frac{n^2}{\log n} \ge c \cdot n^2$$
+$$\frac{1}{\log n} \ge c$$
+
+- $c$ is fixed ,strictly positive constant .
+
+Since the left side shrinks towards zero, it will eventually become strictly less than our positive constant $c$.
+Therefore:
+$$\frac{n^2}{\log n} \neq \Omega(n^2)$$
+Since $f(n)$ is not in $\Omega(n^2)$, it cannot be tightly bounded by $n^2$. Consequently, by definition:
+$$\frac{n^2}{\log n} \neq \Theta(n^2)$$
+
+## Question 9
+
+### $A(n) = 2A(\sqrt n) + \log^2(n)$
+
+#### Inductive Hypothesis
+
+Assume that the bound holds for all values up to some $k$ (where $k < n$). Specifically, we assume that for a sufficiently large $n$:
+
+$$A(\sqrt{n}) \le c(\log^2 \sqrt{n})$$
+$$A(\sqrt{n}) \le \frac{c}{4} (\log n)^2$$
+
+#### Induction
+
+Now substituting the  hypothesis back into the original  relation:
+$$A(n) = 2A(\sqrt n) + \log^2(n)$$
+Substituting the bound for $A(\sqrt{n})$:
+$$A(n) \le 2 \left( \frac{c}{4} (\log n)^2 \right) + (\log^2 n)$$
+$$A(n) \le \frac{c}{2} (\log n)^2 + 1 \cdot (\log^2 n)$$
+$$A(n) \le \left( \frac{c}{2} + 1 \right) (\log^2 n)$$
+
+To ensure $A(n) \le c \cdot \log^2 (n)$ , we need:
+$$\left(\frac c2 + 1\right) \le c$$
+$$\implies 2 \le c$$
+
+With the choice of $c ≥ 2$ and $n_0 = 1$,  $A(n) ≤c · \log^2(n)$ for all $n ≥ n_0$, which means $A(n) = O(log^2(n))$.
+
+## Quesiton 10
+
+$E[X] =\frac1p$
+
+### (a)
+
+$P(n) = \frac1p\cdot(n\log n(n + \log n))$
+
+### (b)
+
+For any fixed $p$ , Time Complexity of $P(n) = O(\frac1p n^2 \log n)$
+
+As $p$ approaches $0 ,  \quad \frac1p \to \infty$
+>$\therefore$ Overall time complexity becomes undefined due to inverse proportionality of $p$ .
+
+### (c)
+$p$ is given to be probability, thus it's value lies between $[0,1]$ , as the value of $p$ increases from $0$ to $1$ which makes the Time Complexity decrease form  $\infty$ to it's minimum value $O(n^2\log n)$. 
+So ,there is not any threshold value of $p$ that makes the algorithm run in polynomial time.The minimum it can do is make the algorithm run in polynomial-logarithmic time  .
+
+
+## Question 11 
+
+### (a) Recurrence relation
+
+$C(n) = \lceil \sqrt n$ 
+$\rceil \cdot C \left(\left \lfloor  \frac{n}{\lceil \sqrt {n} \rceil}  \right \rfloor \right) +n\log n$
+
+### (b) 
+
+For easier analysis , assuming 
+$\left \lfloor  \frac{n}{\lceil \sqrt n \rceil}  \right \rfloor and \quad \lceil \sqrt n$ 
+$\rceil = \sqrt n \implies C(n) \approx \sqrt n C(\sqrt {n}) +n\log n$
+![alt text](Screenshot_20260221-151038_Camera.png)
+
+### (c)
+
+The use of floor and ceiling function only makes the problem more complex. If n is perfectly divisible by $\sqrt n$ , the reccurence would be slightly simpler. This removes the minor discrepancies (like boundary conditions), but the overall time complexity is ineffected by these  minor flaws .
+
+## Question 12 
+
+### (a) 
+
+1. The algorithm takes $O(\log n)$ time as it performs binary search on middle column
+2. Then dividing the give matrix into two submatrices leads to addition of $2M(\frac n2)$ time .
+3. At last merging the matrices takes constant time $O(1)$ .
+
+>$\therefore$ Time Complexity $M(n) = 2M(\frac n2) + O(\log n) + O(1)$
+
+### (b)
+
+We can write every $M(k)$ term by expanding it 
+
+$\implies M(n) = O(\log n) + O(\log \frac n2) +O(\log \frac n4)+ ...+O(\log 1) \approx (\log n )\cdot O(\log n) = O((\log n)^2)$
+
+### (c) 
+
+The use of ceiling and floor function only complicates the process but has no effect on time complexity . These functions ensures the sub division of matirces properly as when n is not divisible by 2 these function handles that situation.
+
+Potential inefficiencies compared to one dimensional binary search arises due to the division process of matrix in which binary search is applied to every new matrix formed which increases the time complexity from $O(\log n)$ to $O(log^2n)$.
+This 2D nature of requires more comparisons and recursions , and hence increases the time complexity. 
+
+It is possible to make algorithm efficient by assuming the matrix as a single array and make Time Complexity as binary search in 1 Dimension.
+
+## Quesstion 13
+
+### $T(n) = a n^klog^kn + b n^{k−1}log^{k−1}n + c n^k + d n^{k−1} +e/log(n)$
+
+#### (a)
+Given $k \ge 1$ , by observation the dominant term as $n \to \infty$ is $an^klog^kn$.
+
+
+#### (b)
+From (a) dominant term is $an^klog^kn$ 
+1. $T(n) \ne O(n^{k−1})$
+    
+    True
+
+    as $n^klog^kn \gg n^{k-1}$ there will be no constant $c$ such that  
+    $$\forall n \ge n_0 , \quad n^klog^kn \le cn^{k-1}$$
+>$\therefore$ $T(n) \ne O(n^{k−1})$
+
+2. $T(n) \ne O(n^k)$
+   
+    True
+
+    as $n^klog^kn \gg n^{k}$ there will be no constant $c$ such that  
+    $$\forall n \ge n_0 , \quad n^klog^kn \le  cn^{k}$$
+>$\therefore$ $T(n) \ne O(n^k)$
+
+3. $T(n) \ne Ω(n^{k+1})$
+
+    True
+   
+   Since $k$ is finite constant  , no matter how large it is $\quad \log^k n \ll n ,\quad as \quad n \to \infty$ 
+   
+   $\implies$ there is no constant $c$ such that 
+   $$\forall n\ge n_0 , \quad n^klog^kn \ge cn^{k+1}$$
+>$\therefore$ $T(n) \ne Ω(n^{k+1})$
+
+4. $T(n) \ne Ω(n^klog(n))$
+
+    False
+
+    Since $k$ is finite constant  $\ge 1 \quad \log n \ll \log^k n ,\quad as \quad n \to \infty$ 
+   
+   $\implies$ there exists constant $c$ such that 
+   $$\forall n\ge n_0 , \quad n^klog^kn \ge cn^{k}\log n$$
+>$\therefore$ $T(n) = Ω(n^{k}\log n)$
+   
+5. $\lim_{n\to \infty} \frac{a n^klog^kn + b n^{k−1}log^{k−1}n + c n^k + d n^{k−1} +e/log(n)}{n^k}$
+
+    As $n\to\infty$ the limit becomes $a\log^k n+c$ which is non zero and $\to\infty .$ 
+
+    In terms of asymptotic notation, this means:
+    - $T(n) = \omega(n^k)$ (Strict lower bound)
+    - $T(n) = \Omega(n^k)$ (Lower bound)
+    - $T(n) \neq O(n^k)$ (It is not bounded from above by $n^k$)
+
+    The limit approaching infinity implies that $\Theta(n^k)$ is NOT a tight bound for $T(n)$.
+    As $T(n)$ outgrows $n^k$  
+
+#### (c)
+
+For $k = 3$ , the function becomes 
+$$T(n) = a n^3log^3n + b n^{2}log^{2}n + c n^3 + d n^{2} +elog(n)$$
+The dominant term is $an^3log^3n$ ,
+
+- It grows faster than $n^2$ 
+  $$\therefore T(n) \ne O(n^2)$$
+- It grows faster than $n^3$
+  $$\therefore T(n) \ne O(n^3)$$
+- It grows slower than $n^4$
+  $$\therefore T(n) \ne \Omega(n^4)$$
+- It grows faster than $n^3 \log n$
+  $$\therefore T(n) = \Omega(n^3 \log n)$$
+
+## Question 14 
+
+### $f(n) = n^{n^{n^{n}}} , \quad g(n) = 2^{2^{n^{n}}}$
+
+#### (a) $f(n) = O(g(n))$
+
+
+
+
