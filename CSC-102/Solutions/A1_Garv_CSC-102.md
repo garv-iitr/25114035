@@ -231,7 +231,7 @@ As $n\to\infin\quad,cos(n)$ oscillates between $[-1,1]$
 
 ### (a) $25 n^3log(n) + 7 n^2 \ne O(n^3)$
 
-#### By defintion
+#### By definition
 
 Assume for the sake of contradiction that $25n^3 \log n + 7n^2 = O(n^3)$ .By the definition, there must exist some positive constants $c > 0$ and $n_0 > 0$ such that for all $n \ge n_0$ :
 
