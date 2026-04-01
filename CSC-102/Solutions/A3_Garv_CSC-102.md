@@ -1,4 +1,50 @@
 # Assignment 3
+## Table of Contents
+
+- [Assignment 3](#assignment-3)
+  - [Table of Contents](#table-of-contents)
+  - [Question 1](#question-1)
+  - [Question 2](#question-2)
+  - [Question 3](#question-3)
+  - [Question 4](#question-4)
+  - [Question 5](#question-5)
+  - [Question 6](#question-6)
+  - [Question 7](#question-7)
+  - [Question 8](#question-8)
+  - [Question 9](#question-9)
+  - [Question 10](#question-10)
+  - [Question 11](#question-11)
+  - [Question 12](#question-12)
+  - [Question 13](#question-13)
+    - [a)](#a)
+    - [b)](#b)
+    - [c)](#c)
+    - [d)](#d)
+  - [Question 14](#question-14)
+    - [a)](#a-1)
+      - [Special Cases :](#special-cases-)
+    - [b)](#b-1)
+      - [Time Complexity :](#time-complexity-)
+    - [c)](#c-1)
+    - [d)](#d-1)
+    - [e)](#e)
+  - [Question 15](#question-15)
+  - [Question 16](#question-16)
+    - [a)](#a-2)
+    - [b)](#b-2)
+    - [c)](#c-2)
+    - [d)](#d-2)
+  - [Question 17](#question-17)
+    - [a)](#a-3)
+    - [b)](#b-3)
+    - [c)](#c-3)
+    - [d)](#d-3)
+    - [Question 18](#question-18)
+  - [Question 19](#question-19)
+  - [Question 20](#question-20)
+
+---
+
 
 ## Question 1
 
@@ -678,4 +724,44 @@ b<-L.head
 ### d)
 
 1. Create a dummy node tt head of list 
-2. Initialize two pointers , 'boundary' 
+2. Initialize two pointers , 'boundary' $\larr$ &dummy and 'scanner' $\larr$ *(dummy.next).next
+3. While scanner is not `NULL`, keep checking whether scanner->data < x,if yes , swap *(boundary->next) and *scanner. Move boundary and scanner by one node each. If not, move scanner ahead one node
+4. Delete the dummy node
+
+
+### Question 18
+
+Considering that the initial list is not a sorted list, $O(n)$ time is the most straightforward way of finding the number of occurences of a value in a given list.
+
+- We initialise a $count$ variable to $0$ and a $curr$ pointer to traverse through the list.
+
+- At any node, we simply check whether $curr\rightarrow val$ is equal to $v$ or not, if it is we simply add $1$ to count else we do nothing.
+
+- We update $curr$ to the next node and repeat the previous step until it poiints to $nullptr$.
+
+## Question 19
+
+Same as question 11
+
+To solve this problem let us first consider $2$ linked lists $A$ and $B$, with lengths $m$ and $n$. If we consider $m\geq{n}$ and carry out the following steps:
+
+- We create $3$ pointers $currA$ and $currB$ to traverse through $A$ and $B$, as well as the pointer which returns the frist common node as $comm$ which is initialised to $nullptr$.
+
+- We traverse through $(m\text{ - }n)$ nodes in $A$ such that we are $\left(n\text{ - }1\right)$ nodes before the end.
+
+- Now we start updating both the pointers simultaneously and check the equality at each step. If we find the equality to hold, we update $comm=currA$ and we break the loop and return it. If we traverse through the entire list and find no common node, out $comm$ is still $nullptr$, so we can easily output that there was no common node using that.
+
+## Question 20 
+
+**PseudoCode** 
+
+it $\larr$ L.head
+scanner $\larr$ it $\to$next
+while it $\to$ next != NULL :
+$\quad$ if it $\to$ a == scanner $\to$ b && it $\to$ b == scanner $\to$ a
+$\quad$ $\quad$ print (a,b) , (b,a) 
+$\quad$ scanner = scanner $\to$ next
+it = it $\to$ next  
+
+$\frac{n(n+1)}{2}$ operations 
+> $O(n^2)$

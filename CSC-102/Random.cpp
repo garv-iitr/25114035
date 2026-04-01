@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 void swapVariables(int &a , int &b) {
@@ -186,11 +188,36 @@ void print(int* a , int n) {
 void printMatrix(){
     
 }
+
+bool isIdempotent(vector<vector<int>>& mat) {
+    int n = mat.size() ;
+
+    for(int i = 0 ; i < n ; i++) {
+        for(int j = 0 ; j < n ; j++) {
+            int sum = 0 ;
+
+            for(int k = 0 ; k < n ; k++) {
+                sum += mat[i][k] * mat [k][j] ;
+            }
+
+            if(sum!=mat[i][j]) return false ;
+        }
+    }
+
+    return true;
+}
+
+
 int main() {
-    int a[] = {-2,7,3,0,5} ;
-    int n = sizeof(a)/sizeof(a[0]) ;
-    string s = "Hi My name is Garv";
-    cout<<recursiveSum(10)<<endl ;
-    
-    return 0;
+    int c[] = {2.8,3.4,4,6.7,5} ;
+    int j ; 
+    int *p = c , *q = c ;
+    for(j = 0; j < 5 ; j++) {
+        cout<<*q ;
+        ++q ;
+    }
+    for(j = 0 ; j < 5 ; j++) {
+        cout << *p ;
+        ++p;
+    }
 }
